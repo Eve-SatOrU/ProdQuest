@@ -17,7 +17,7 @@ ProdQuest is a dynamic and aesthetic To-Do List web application that allows you 
 1. Clone the repository:
 
    ```
-   git clone https://github.com/Eve-SatOrU/todo.git
+   git clone https://github.com/Eve-SatOrU/ProdQuest.git
     ```
 2. Navigate to the project directory:
 
