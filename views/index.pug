@@ -1,0 +1,68 @@
+//- // views/index.pug
+
+//- doctype html
+//- html
+//-   head
+//-     title Simple Web App
+//-     link(rel="stylesheet", href="./style.css")
+//-   body
+//-     h1 Welcome to the Simple Web App
+//-     h2 Tasks
+//-     ul
+//-       each task, index in tasks
+//-         li
+//-           input(type="checkbox", onchange=`location.href='/complete-task/${index}'`, checked=task.completed)
+//-           span(class=task.completed ? 'completed' : '')= task.name
+//-           form(action=`/delete-task/${index}`, method="post")
+//-             input(type="submit", value="Delete", class="delete-button")
+//-     h2 Add New Task
+//-     form(action="/add-task", method="post")
+//-       input(type="text", name="taskName", placeholder="Enter task name")
+//-       input(type="submit", value="Add Task")
+doctype html
+html
+  head
+    meta(charset="UTF-8")
+    meta(name="viewport", content="width=device-width,initial-scale=1")
+    meta(name="theme-color", content="#062e3f")
+    meta(name="Description", content="To-Do List WebApp.")
+    link(href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@300&display=swap", rel="stylesheet")
+    link(rel="stylesheet", href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0-2/css/all.min.css", integrity="sha256-46r060N2LrChLLb5zowXQ72/iKKNiw/lAmygmHExk/o=", crossorigin="anonymous")
+    //- link(rel='icon', type='image/x-icon', href='/favicon.ico') 
+    link(rel="stylesheet", href="css/style.css")
+    title ProdQuest
+  body(class=savedTheme)
+    #header
+      .flexrow-container
+        .standard-theme.theme-selector
+        .light-theme.theme-selector
+        .darker-theme.theme-selector
+      h1#title ProdQuest.
+    #form
+      form(action="/add-task", method="post")
+        input.todo-input(type="text", name="taskName", placeholder="Add a task.")
+        button.todo-btn(type="submit") I Got This!
+    .version
+      div
+        p
+          span#datetime
+            script(src="js/time.js", type="text/javascript")
+    #myUnOrdList
+      ul.todo-list
+        each task, index in tasks
+          .todo(class=`${task.completed ? 'completed' : ''} ${savedTheme}-todo`)
+            .todo-content
+            span.todo-item= task.name
+            .todo-actions
+              form(action=`/complete-task/${index}`, method="post")
+                button.check-btn(type="submit")
+                  i.fas.fa-check
+              form(action=`/delete-task/${index}`, method="post")
+                button.delete-btn(type="submit")
+                  i.fas.fa-trash
+            form(action=`/update-task/${index}`, method="post")
+              input(type="text", name="updatedTaskName", value=task.name)
+              button.todo-btn(type="submit")
+                i.fas.fa-edit
+
+script(src="js/main.js", type="text/javascript")
