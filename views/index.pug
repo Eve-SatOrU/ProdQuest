@@ -60,9 +60,9 @@ html
               form(action=`/delete-task/${index}`, method="post")
                 button.delete-btn(type="submit")
                   i.fas.fa-trash
-            form(action=`/update-task/${index}`, method="post")
-              input(type="text", name="updatedTaskName", value=task.name)
-              button.todo-btn(type="submit")
-                i.fas.fa-edit
+              form(action=`/update-task/${index}`, method="post")
+                input(type="text", name="updatedTaskName", value=task.name)
+                button.todo-btn(type="submit")
+                  i.fas.fa-edit
 
 script(src="js/main.js", type="text/javascript")
